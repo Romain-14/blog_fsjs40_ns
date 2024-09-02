@@ -20,4 +20,7 @@ const pool = mysql.createPool({
 //     .catch(error => console.error(`Error connecting to database: ${error.message}`));
 
 
+
+
 export default pool;
+

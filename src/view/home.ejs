@@ -18,7 +18,15 @@
 		<main>
 			<section>
 				<h2>Latest Article</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nobis aut aspernatur, sapiente suscipit earum cumque, perferendis nostrum animi aliquid temporibus rem. Facere cupiditate sint minus tenetur amet ipsa ut veniam, ea ad quos obcaecati quisquam a commodi provident repellat, mollitia in. Enim rem ullam doloribus dolores consectetur voluptatem neque commodi veritatis nobis repellat minus consequatur recusandae ipsum illo vel, iusto totam. Vel at numquam doloremque, ut ab quod culpa assumenda commodi, recusandae voluptatum, reprehenderit dignissimos natus perferendis. Fugit quos blanditiis, iusto aliquid maiores repudiandae consequuntur veniam eum sapiente vero corporis voluptatibus temporibus suscipit provident magnam quam omnis reiciendis. Earum facere dolores distinctio sequi quisquam, deleniti reprehenderit quas eligendi, odio, molestias doloribus ex maiores alias fugit? Praesentium molestiae ipsum ducimus.</p>
+                <% for (const data of datas) {%>
+                    <article>
+                        <h3><%= data.title %></h3>
+                        <p><%= data.content %></p>
+                        
+                    </article>
+
+
+                <% } %>
 			</section>
 		</main>
 		<footer>
