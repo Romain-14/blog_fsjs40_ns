@@ -17,6 +17,9 @@ app.set("views", path.join(process.cwd(), "src/view"));
 app.use("/css", express.static(path.join(process.cwd(), "public/css")));
 app.use("/img", express.static(path.join(process.cwd(), "public/img")));
 
+// FORMULAIRE
+app.use(express.urlencoded({ extended: false }));
+
 // middleware pour le router
 app.use(router);
 
