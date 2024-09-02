@@ -8,24 +8,19 @@
 	</head>
 	<body>
 		<header>
-            <nav>
-                <a href="/">home</a>
+			<nav>
+				<a href="/">home</a>
 				<a href="/contact">contact</a>
 				<a href="/about">about-me</a>
 				<a href="/authentication">sign-in</a>
 			</nav>
 		</header>
 		<main>
-			<section>
-				<h2>Latest Article</h2>
-                <% for (const data of datas) {%>
-                    <article>
-                        <h3><%= data.title %></h3>
-                        <a href="/story/<%= data.id %>">Read More</a>
-                    </article>
-
-                <% } %>
-			</section>
+            <a href="/">Back to home</a>
+			<article>
+				<h1><%= data.title %></h1>
+                <p><%- data.content%></p>
+			</article>
 		</main>
 		<footer>
 			<p>&copy; - Romain Fournier - 2024</p>
