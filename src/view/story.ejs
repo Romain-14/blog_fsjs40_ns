@@ -7,28 +7,18 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<header>
-			<nav>
-				<a href="/">home</a>
-				<a href="/contact">contact</a>
-				<a href="/about">about-me</a>
-				<a href="/authentication">sign-in</a>
-			</nav>
-		</header>
+
+        <%- include("partial/header") %>
+		
 		<main>
-            <a href="/">Back to home</a>
+			<p>How do you feel today, <%= locals.username%></p>
+			<a href="/">Back to home</a>
 			<article>
 				<h1><%= data.title %></h1>
-                <img src="/img/<%= data.img %>">
-                <%- data.content%>
+				<img src="/img/<%= data.img %>" />
+				<%- data.content%>
 			</article>
 		</main>
-		<footer>
-			<p>&copy; 2024 - Romain Fournier </p>
-			<p>
-				Photo de Mikhail Nilov:
-				https://www.pexels.com/fr-fr/photo/mer-route-nature-ciel-6943666/
-			</p>
-		</footer>
+		<%- include("partial/footer") %>
 	</body>
 </html>

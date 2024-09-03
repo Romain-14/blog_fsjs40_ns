@@ -1,0 +1,14 @@
+<header>
+    <nav>
+        <a href="/">home</a>
+
+        <% if(locals.isLogged) { %>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+        <% } else { %>
+        <a href="/authentication">Login</a>
+        <% } %>
+
+        <a href="/admin">ADMIN</a>
+    </nav>
+</header>
