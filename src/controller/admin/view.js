@@ -15,7 +15,7 @@ const admin_view = async (req, res) => {
 			"SELECT COUNT(*) AS count FROM category"
 		);
 
-		res.render("admin/index", {
+		res.render("admin/layout", { template: "home",
 			users: users.count,
 			stories: stories.count,
 			comments: comments.count,
@@ -29,14 +29,14 @@ const admin_view = async (req, res) => {
 const story_list_view = (req, res) => {
 	const q = "SELECT * FROM story";
 	pool.query(q).then(([stories]) => {
-		res.render("admin/story/list", { stories });
+		res.render("admin/layout", { template: "story/list", stories });
 	});
 };
 
 const create_story_view = (req, res) => {
 	const q = "SELECT * FROM category";
 	pool.query(q).then(([categories]) => {
-		res.render("admin/story/create", { categories });
+		res.render("admin/layout", { template: "story/create", categories });
 	});
 };
 const update_story_view = async (req, res) => {
@@ -47,7 +47,7 @@ const update_story_view = async (req, res) => {
 		const q2 = "SELECT * FROM category";
 		const [categories] = await pool.query(q2);
 
-		res.render("admin/story/update", { story, categories });
+		res.render("admin/layout", { template: "story/update", story, categories });
 	} catch (error) {
 		console.log(error);
 	}

@@ -1,51 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/css/index.css" />
-		<title>Back Office</title>
-	</head>
-	<body>
-		<header>
-			<h1>Back Office</h1>
-			<nav>
-                <a href="/admin">Retourner à l'accueil</a>
-				<a href="/admin/story">Retourner aux articles</a>
-				<a href="/admin/category">Gérer les catégories</a>
-			</nav>
-		</header>
-		<main>
-			<h2>Update Story</h2>
+<main>
+	<h2>Update Story</h2>
 
-            <form action="/admin/story/update/<%= story.id %>" method="post">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="<%= story.title %>" required />
-                
-                <label for="content">Content</label>
-                <textarea name="content" id="content" required><%= story.content %></textarea>
+	<form action="/admin/story/update/<%= story.id %>" method="post">
+		<label for="title">Title</label>
+		<input
+			type="text"
+			name="title"
+			id="title"
+			value="<%= story.title %>"
+			required
+		/>
 
-                <label for="image-name">Image name</label>
-                <input type="text" name="img" id="image-name" value="<%= story.img %>" required />
+		<label for="content">Content</label>
+		<textarea name="content" id="content" required>
+<%= story.content %></textarea
+		>
 
-                <label for="category">Category</label>
-                <select name="category_id" id="category">
-                    <option selected value="<%= story.idCategory %>"><%= story.label %></option>
-                    <% for (const category of categories) {%>
-                        <% if(story.idCategory !== category.id) {%> 
-                            <option value="<%= category.id %>"><%= category.label %></option>
-                        <% } %>
-                    <% } %>
-                </select>
+		<label for="image-name">Image name</label>
+		<input
+			type="text"
+			name="img"
+			id="image-name"
+			value="<%= story.img %>"
+			required
+		/>
 
-                <button type="submit">Update</button>
+		<label for="category">Category</label>
+		<select name="category_id" id="category">
+			<option selected value="<%= story.idCategory %>">
+				<%= story.label %>
+			</option>
+			<% for (const category of categories) {%> <% if(story.idCategory !==
+			category.id) {%>
+			<option value="<%= category.id %>"><%= category.label %></option>
+			<% } %> <% } %>
+		</select>
 
-            </form>
-
-			
-		</main>
-		<footer>
-			<p>&copy; 2024 - Romain Fournier</p>
-		</footer>
-	</body>
-</html>
+		<button type="submit">Update</button>
+	</form>
+</main>

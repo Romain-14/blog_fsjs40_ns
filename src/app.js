@@ -14,6 +14,7 @@ app.set("views", path.join(process.cwd(), "src/view"));
 // configuration de dossier statique
 app.use("/css", express.static(path.join(process.cwd(), "public/css")));
 app.use("/img", express.static(path.join(process.cwd(), "public/img")));
+app.use("/js", express.static(path.join(process.cwd(), "public/js")));
 
 // dans un middleware d'express qui donc s'exécutera sur toutes les routes
 // on va configurer express-session
@@ -43,8 +44,6 @@ app.use(express.urlencoded({ extended: false }));
 //  utilisation d'un middleware pour configurer la session personnalisée et envoyé des données dans les vues grâce à res.locals (objet express) évite de répéter du code dans la second paramètres des routes (méthode render).
 // req.session est un objet qu'on va compléter lors de la connexion de l'utilisateur sur la route /login si c'est tout correspond (identifiant et password)
 app.use((req, res, next) => {
-    console.log(req.session);
-
     const username = req.session.isLogged ? req.session.user.username : "Guest";
     res.locals.username = username;
     res.locals.isLogged = req.session.isLogged;

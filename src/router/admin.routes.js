@@ -8,6 +8,7 @@ import {
 } from "../controller/admin/view.js";
 import { create_story } from "../controller/admin/post.js";
 import { update_story } from "../controller/admin/update.js";
+import { delete_story } from "../controller/admin/delete.js";
 
 const router = express.Router();
 
@@ -26,6 +27,8 @@ router.post("/story/create", create_story);
 
 // UPDATE STORY
 router.post("/story/update/:id", update_story);
+
+router.get("/story/delete/:id", delete_story);
 
 
 export default router;

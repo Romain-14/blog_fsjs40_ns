@@ -10,6 +10,11 @@ html {
 	font-size: 62.5%;
 }
 
+img {
+    width: 300px;
+    height: 200px;
+}
+
 /* Variables */
 :root {
 	--primary-color: #3498db;
@@ -155,4 +160,49 @@ textarea {
     width: 200px;
     height: 200px;
     object-fit: cover;
+}
+
+/* icon */
+
+a i {
+    cursor: pointer;
+}
+
+.fa-pen-to-square {
+    color: #3498db;
+}
+
+.fa-trash {
+    color: gray;
+}
+
+.cta-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    vertical-align: middle;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+table {
+    min-width: 600px;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even), thead {
+    background-color: #f2f2f2;
 }

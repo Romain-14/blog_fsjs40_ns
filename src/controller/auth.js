@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import pool from "../config/db.js";
+import Query from "../model/story.js";
 
 // REGISTER
 
@@ -18,7 +18,7 @@ const register = async (req, res) => {
 		// préparation de la requête SQL
 		const q = "INSERT INTO user (username, password) VALUES (?, ?)";
 		// exécution de la requête SQL en envoyant le nom et le HASH du mot de passe
-		await pool.execute(q, [req.body.username, hash]);
+		await Query.runWithParams(q, [req.body.username, hash]);
 		// redirection vers la page "login" pour améliorer l'experience utilisateur
 		res.redirect("/authentication");
 		return; // on sort de la fonction
@@ -61,8 +61,10 @@ const login = async (req, res) => {
 // LOGOUT
 
 const logout = (req, res) => {
+    // la méthode destroy de l'objet session détruit la session en cours
+    // on passe une fonction de callback pour être sûr que la session est bien détruite
 	req.session.destroy(() => {
-		req.session = null;
+		req.session = null; // 
 		res.clearCookie("connect.sid");
 		res.redirect("/");
 	});

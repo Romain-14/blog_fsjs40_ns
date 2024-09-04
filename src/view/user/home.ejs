@@ -1,0 +1,16 @@
+<main>
+	<section>
+		<h1>Bienvenue sur mon blog, <%= locals.username %> !</h1>
+
+		<div class="banner"></div>
+
+		<h2>Latest Article</h2>
+		<% for (const data of datas) {%>
+		<article>
+			<h3><%= data.title %></h3>
+			<a href="/story/<%= data.id %>">Read More</a>
+		</article>
+
+		<% } %>
+	</section>
+</main>
