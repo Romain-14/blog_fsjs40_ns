@@ -1,13 +1,11 @@
 import pool from "../../config/db.js";
 
-const home_view = (req, res) => {    
-
+const home_view = (req, res) => {
 	const q = "SELECT * FROM story";
 	pool.query(q).then(([datas]) => {
 		res.render("home", { datas });
 	});
 };
-
 
 const story_view = (req, res) => {
 	const q = "SELECT * FROM story WHERE id = ?";
@@ -17,7 +15,5 @@ const story_view = (req, res) => {
 		})
 		.catch((error) => console.log(error));
 };
-
-
 
 export { home_view, story_view };

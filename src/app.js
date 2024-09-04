@@ -15,7 +15,6 @@ app.set("views", path.join(process.cwd(), "src/view"));
 app.use("/css", express.static(path.join(process.cwd(), "public/css")));
 app.use("/img", express.static(path.join(process.cwd(), "public/img")));
 
-
 // dans un middleware d'express qui donc s'exécutera sur toutes les routes
 // on va configurer express-session
 // il a besoin d'un secret pour crypter les cookies
