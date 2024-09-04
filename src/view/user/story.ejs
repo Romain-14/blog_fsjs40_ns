@@ -2,8 +2,16 @@
 	<p>How do you feel today, <%= locals.username%></p>
 	<a href="/">Back to home</a>
 	<article>
-		<h1><%= data.title %></h1>
+		<h2><%= data.title %></h2>
 		<img src="/img/<%= data.img %>" />
 		<%- data.content%>
+
+		<p>
+			<em>
+				By <%= data.author%> on <%= new
+				Date(data.publishDate).toLocaleDateString() %> at <%= new
+				Date(data.publishDate).toLocaleTimeString() %>
+			</em>
+		</p>
 	</article>
 </main>

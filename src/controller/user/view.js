@@ -1,6 +1,6 @@
 import pool from "../../config/db.js";
 
-import Story from "../../model/story.js";
+import Story from "../../model/Story.js";
 
 // AVANT MODEL
 // const home_view = (req, res) => {

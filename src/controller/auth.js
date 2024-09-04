@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
 
-import Query from "../model/story.js";
+import User from "../model/user.js";
 
 // REGISTER
 
 const register_view = (req, res) => {
-	res.render("register");
+	res.render("user/layout", { template: "register" });
 };
 
 const register = async (req, res) => {
@@ -15,10 +15,8 @@ const register = async (req, res) => {
 		// ensuite on hash le mot de passe
 		// méthode hash, prend en paramètre le mot de passe et le nombre de tours de la fonction de hachage (plus la valeur est élevée plus le hash est sécurisé et coûteux en ressources)
 		const hash = await bcrypt.hash(req.body.password, 10);
-		// préparation de la requête SQL
-		const q = "INSERT INTO user (username, password) VALUES (?, ?)";
-		// exécution de la requête SQL en envoyant le nom et le HASH du mot de passe
-		await Query.runWithParams(q, [req.body.username, hash]);
+		// on ajoute le nouvel utilisateur en base de données
+		await User.add([req.body.username, hash]);
 		// redirection vers la page "login" pour améliorer l'experience utilisateur
 		res.redirect("/authentication");
 		return; // on sort de la fonction
@@ -30,14 +28,12 @@ const register = async (req, res) => {
 // LOGIN
 
 const login_view = (req, res) => {
-	res.render("login");
+	res.render("user/layout", { template: "login" });
 };
 
 const login = async (req, res) => {
 	// préparation de la requête SQL afin de vérifier si l'utilisateur existe
-	const q = "SELECT username, password, role FROM `user` WHERE username = ?";
-	// execution de la requête SQL
-	const [[user]] = await pool.execute(q, [req.body.username]);
+    const user = await User.getOneByUsername([req.body.username]);
 	// on récupère la donnée dans un tableau bi-dimensional --> destructuration double
 	if (user) {
 		// si l'utilisateur existe on va pouvoir vérifier le password
@@ -61,10 +57,10 @@ const login = async (req, res) => {
 // LOGOUT
 
 const logout = (req, res) => {
-    // la méthode destroy de l'objet session détruit la session en cours
-    // on passe une fonction de callback pour être sûr que la session est bien détruite
+	// la méthode destroy de l'objet session détruit la session en cours
+	// on passe une fonction de callback pour être sûr que la session est bien détruite
 	req.session.destroy(() => {
-		req.session = null; // 
+		req.session = null; //
 		res.clearCookie("connect.sid");
 		res.redirect("/");
 	});

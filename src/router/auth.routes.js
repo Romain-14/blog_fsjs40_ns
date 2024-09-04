@@ -22,7 +22,7 @@ router.get("/register", register_view);
 router.post("/register", register);
 
 // LOGIN
-router.get("/authentication", login_view);
+router.get("/", login_view);
 router.post("/login", login);
 
 router.get("/logout", logout);
